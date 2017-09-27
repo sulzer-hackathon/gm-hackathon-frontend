@@ -1,0 +1,67 @@
+.login{
+  color: #04a9f4;
+}
+.login .logo .menu{
+  position: absolute;
+  font-size: 4vw;
+  left: 4vw;
+  top: 4vw;
+  color: #90ffaa;
+}
+.login .logo .search{
+  font-size: 15vw;
+}
+.login .logo-name{
+  font-size: 4.25vw;
+  letter-spacing: -3px;
+  text-transform: uppercase;
+  color: #90ffaa;
+  margin-bottom: 3.5vw;
+}
+.login .mdl-textfield__input{
+  border-bottom:1px solid #fefefe;
+  color:#fefefe;
+  padding-left: 30px;
+}
+.login .mdl-textfield__label{
+  color:#fefefe;
+}
+.login .mdl-textfield__label i{
+  font-size: 18px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+.login .mdl-textfield{
+  width: 100%;
+}
+.login .mdl-textfield{
+  margin:-5px 0;
+}
+.login button{
+  width: 100%;
+  margin-top:3.5vw;
+  display: block;
+}
+.login .additional{
+  text-align: center;
+  margin-top: 3.5vw;
+}
+@media(max-width:800px){
+  .login .logo .search{
+    font-size: 12vw;
+  }
+  .login .logo .menu{
+    font-size: 3.2vw;
+    left: 3.2vw;
+    top: 3.2vw;
+  }
+  .login button{
+    margin-top:2vw;
+  }
+  .login .logo-name{
+    margin-bottom: 2vw;
+  }
+  .login .additional{
+    margin-top: 2vw;
+  }
+}

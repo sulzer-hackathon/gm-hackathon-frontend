@@ -1,0 +1,398 @@
+.fx,
+[class*="fx-cell"] {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+}
+
+.fx-column {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  -o-flex-direction: column;
+  flex-direction: column;
+}
+
+.fx-row {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  -o-flex-direction: row;
+  flex-direction: row;
+}
+
+.fx-center {
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+}
+
+.fx-cell-0 {
+  -webkit-flex: 0;
+  -moz-flex: 0;
+  -ms-flex: 0;
+  -o-flex: 0;
+  flex: 0;
+}
+
+.fx-cell-1 {
+  -webkit-flex: 1;
+  -moz-flex: 1;
+  -ms-flex: 1;
+  -o-flex: 1;
+  flex: 1;
+}
+
+.fx-cell-2 {
+  -webkit-flex: 2;
+  -moz-flex: 2;
+  -ms-flex: 2;
+  -o-flex: 2;
+  flex: 2;
+}
+
+.fx-cell-3 {
+  -webkit-flex: 3;
+  -moz-flex: 3;
+  -ms-flex: 3;
+  -o-flex: 3;
+  flex: 3;
+}
+
+.fx-cell-4 {
+  -webkit-flex: 4;
+  -moz-flex: 4;
+  -ms-flex: 4;
+  -o-flex: 4;
+  flex: 4;
+}
+
+.fx-cell-5 {
+  -webkit-flex: 5;
+  -moz-flex: 5;
+  -ms-flex: 5;
+  -o-flex: 5;
+  flex: 5;
+}
+
+.fx-cell-6 {
+  -webkit-flex: 6;
+  -moz-flex: 6;
+  -ms-flex: 6;
+  -o-flex: 6;
+  flex: 6;
+}
+
+.fx-cell-7 {
+  -webkit-flex: 7;
+  -moz-flex: 7;
+  -ms-flex: 7;
+  -o-flex: 7;
+  flex: 7;
+}
+
+.fx-cell-8 {
+  -webkit-flex: 8;
+  -moz-flex: 8;
+  -ms-flex: 8;
+  -o-flex: 8;
+  flex: 8;
+}
+
+.fx-cell-9 {
+  -webkit-flex: 9;
+  -moz-flex: 9;
+  -ms-flex: 9;
+  -o-flex: 9;
+  flex: 9;
+}
+
+.fx-cell-10 {
+  -webkit-flex: 10;
+  -moz-flex: 10;
+  -ms-flex: 10;
+  -o-flex: 10;
+  flex: 10;
+}
+
+.fx-cell-11 {
+  -webkit-flex: 11;
+  -moz-flex: 11;
+  -ms-flex: 11;
+  -o-flex: 11;
+  flex: 11;
+}
+
+.fx-cell-12 {
+  -webkit-flex: 12;
+  -moz-flex: 12;
+  -ms-flex: 12;
+  -o-flex: 12;
+  flex: 12;
+}
+
+.fx-cell-13 {
+  -webkit-flex: 13;
+  -moz-flex: 13;
+  -ms-flex: 13;
+  -o-flex: 13;
+  flex: 13;
+}
+
+.fx-cell-14 {
+  -webkit-flex: 14;
+  -moz-flex: 14;
+  -ms-flex: 14;
+  -o-flex: 14;
+  flex: 14;
+}
+
+.fx-cell-15 {
+  -webkit-flex: 15;
+  -moz-flex: 15;
+  -ms-flex: 15;
+  -o-flex: 15;
+  flex: 15;
+}
+
+.fx-cell-16 {
+  -webkit-flex: 16;
+  -moz-flex: 16;
+  -ms-flex: 16;
+  -o-flex: 16;
+  flex: 16;
+}
+
+.fx-cell-17 {
+  -webkit-flex: 17;
+  -moz-flex: 17;
+  -ms-flex: 17;
+  -o-flex: 17;
+  flex: 17;
+}
+
+.fx-cell-18 {
+  -webkit-flex: 18;
+  -moz-flex: 18;
+  -ms-flex: 18;
+  -o-flex: 18;
+  flex: 18;
+}
+
+.fx-cell-19 {
+  -webkit-flex: 19;
+  -moz-flex: 19;
+  -ms-flex: 19;
+  -o-flex: 19;
+  flex: 19;
+}
+
+.fx-cell-20 {
+  -webkit-flex: 20;
+  -moz-flex: 20;
+  -ms-flex: 20;
+  -o-flex: 20;
+  flex: 20;
+}
+
+/*
+  creates classes like:
+  .fx-align-items-flex-end
+  .fx-justify-content-space-between
+  .fx-align-self-center
+  ...etc
+*/
+.fx-align-items-stretch {
+  -webkit-align-items: stretch;
+  -moz-align-items: stretch;
+  -ms-align-items: stretch;
+  -o-align-items: stretch;
+  align-items: stretch;
+}
+
+.fx-align-items-center {
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+}
+
+.fx-align-items-flex-start {
+  -webkit-align-items: flex-start;
+  -moz-align-items: flex-start;
+  -ms-align-items: flex-start;
+  -o-align-items: flex-start;
+  align-items: flex-start;
+}
+
+.fx-align-items-flex-end {
+  -webkit-align-items: flex-end;
+  -moz-align-items: flex-end;
+  -ms-align-items: flex-end;
+  -o-align-items: flex-end;
+  align-items: flex-end;
+}
+
+.fx-align-items-baseline {
+  -webkit-align-items: baseline;
+  -moz-align-items: baseline;
+  -ms-align-items: baseline;
+  -o-align-items: baseline;
+  align-items: baseline;
+}
+
+.fx-align-items-initial {
+  -webkit-align-items: initial;
+  -moz-align-items: initial;
+  -ms-align-items: initial;
+  -o-align-items: initial;
+  align-items: initial;
+}
+
+.fx-align-items-inherit {
+  -webkit-align-items: inherit;
+  -moz-align-items: inherit;
+  -ms-align-items: inherit;
+  -o-align-items: inherit;
+  align-items: inherit;
+}
+
+.fx-align-self-auto {
+  -webkit-align-self: auto;
+  -moz-align-self: auto;
+  -ms-align-self: auto;
+  -o-align-self: auto;
+  align-self: auto;
+}
+
+.fx-align-self-stretch {
+  -webkit-align-self: stretch;
+  -moz-align-self: stretch;
+  -ms-align-self: stretch;
+  -o-align-self: stretch;
+  align-self: stretch;
+}
+
+.fx-align-self-center {
+  -webkit-align-self: center;
+  -moz-align-self: center;
+  -ms-align-self: center;
+  -o-align-self: center;
+  align-self: center;
+}
+
+.fx-align-self-flex-start {
+  -webkit-align-self: flex-start;
+  -moz-align-self: flex-start;
+  -ms-align-self: flex-start;
+  -o-align-self: flex-start;
+  align-self: flex-start;
+}
+
+.fx-align-self-flex-end {
+  -webkit-align-self: flex-end;
+  -moz-align-self: flex-end;
+  -ms-align-self: flex-end;
+  -o-align-self: flex-end;
+  align-self: flex-end;
+}
+
+.fx-align-self-baseline {
+  -webkit-align-self: baseline;
+  -moz-align-self: baseline;
+  -ms-align-self: baseline;
+  -o-align-self: baseline;
+  align-self: baseline;
+}
+
+.fx-align-self-initial {
+  -webkit-align-self: initial;
+  -moz-align-self: initial;
+  -ms-align-self: initial;
+  -o-align-self: initial;
+  align-self: initial;
+}
+
+.fx-align-self-inherit {
+  -webkit-align-self: inherit;
+  -moz-align-self: inherit;
+  -ms-align-self: inherit;
+  -o-align-self: inherit;
+  align-self: inherit;
+}
+
+.fx-justify-content-flex-start {
+  -webkit-justify-content: flex-start;
+  -moz-justify-content: flex-start;
+  -ms-justify-content: flex-start;
+  -o-justify-content: flex-start;
+  justify-content: flex-start;
+}
+
+.fx-justify-content-flex-end {
+  -webkit-justify-content: flex-end;
+  -moz-justify-content: flex-end;
+  -ms-justify-content: flex-end;
+  -o-justify-content: flex-end;
+  justify-content: flex-end;
+}
+
+.fx-justify-content-center {
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+}
+
+.fx-justify-content-space-between {
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  -o-justify-content: space-between;
+  justify-content: space-between;
+}
+
+.fx-justify-content-space-around {
+  -webkit-justify-content: space-around;
+  -moz-justify-content: space-around;
+  -ms-justify-content: space-around;
+  -o-justify-content: space-around;
+  justify-content: space-around;
+}
+
+.fx-justify-content-initial {
+  -webkit-justify-content: initial;
+  -moz-justify-content: initial;
+  -ms-justify-content: initial;
+  -o-justify-content: initial;
+  justify-content: initial;
+}
+
+.fx-justify-content-inherit {
+  -webkit-justify-content: inherit;
+  -moz-justify-content: inherit;
+  -ms-justify-content: inherit;
+  -o-justify-content: inherit;
+  justify-content: inherit;
+}
