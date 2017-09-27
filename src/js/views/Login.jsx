@@ -1,11 +1,22 @@
 class Login extends React.Component {
   constructor (props) {
     super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('A name was submitted: ', event);
+    store.dispatch({ type: 'LOADER_STATE', payload: true });
+    adapterService.handleLogin(this.refs.username.value, this.refs.password.value).then((res)=>{
+      store.dispatch({ type: 'LOADER_STATE', payload: false });
+    }).catch((err)=>{
+      debugger;
+    });
+    // ReactRouter.hashHistory.push('login');
+  }
+
+  componentDidMount(){
+    console.log(this.props);
   }
 
   render() {
@@ -22,12 +33,12 @@ class Login extends React.Component {
         </div>
         <form onSubmit={this.handleSubmit}>
           <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input className="mdl-textfield__input" type="text" id="sample3" />
+            <input className="mdl-textfield__input" type="text" ref="username" />
             <label className="mdl-textfield__label" htmlFor="sample3"><i className="material-icons">mail_outline</i>Username</label>
           </div>
           <br/>
           <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input className="mdl-textfield__input" type="text" id="sample3" />
+            <input className="mdl-textfield__input" type="text" ref="password" />
             <label className="mdl-textfield__label" htmlFor="sample3"><i className="material-icons">lock_outline</i>Password</label>
           </div>
           <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">

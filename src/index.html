@@ -34,11 +34,11 @@
     <script src="GMLIB/util.js"></script> -->
     <script src="GMLIB/voice.js"></script>
 
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router/3.2.0/ReactRouter.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.js"></script>
+    <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.3/axios.js"></script>
 
   </head>
@@ -63,11 +63,22 @@
 
     <div id="root"></div>
 
+    <!-- Redux -->
+    <script type="text/babel" src="js/reducers/app.jsx"></script>
+    <script type="text/babel" src="js/reducers/loader.jsx"></script>
+    <script type="text/babel" src="js/redux.jsx"></script>
 
+    <!-- Services -->
+    <script type="text/babel" src="js/services/adapter.jsx"></script>
+
+    <!-- Views -->
     <script type="text/babel" src="js/views/Main.jsx"></script>
     <script type="text/babel" src="js/views/Login.jsx"></script>
+    <script type="text/babel" src="js/views/Dashboard.jsx"></script>
 
+    <!-- Main -->
     <script type="text/babel" src="js/app.jsx"></script>
+
 
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script> -->
   </body>
