@@ -1,11 +1,11 @@
-var Router = ReactRouter.Router;
-var Route = ReactRouter.Route;
-var DefaultRoute = ReactRouter.DefaultRoute;
-var Link = ReactRouter.Link;
-var RouteHandler = ReactRouter.RouteHandler;
-var hashHistory = ReactRouter.hashHistory;
+const Router = ReactRouter.Router;
+const Route = ReactRouter.Route;
+const DefaultRoute = ReactRouter.DefaultRoute;
+const Link = ReactRouter.Link;
+const RouteHandler = ReactRouter.RouteHandler;
+const hashHistory = ReactRouter.hashHistory;
 
-ReactDOM.render(
+const render = () => ReactDOM.render(
   <Router history={hashHistory}>
     <Route name="main" path="/" component={Main}>
       <Route name="login" path="login" component={Login}/>
@@ -14,3 +14,6 @@ ReactDOM.render(
   </Router>,
   document.getElementById('root')
 );
+
+render();
+store.subscribe(render);

@@ -25,11 +25,13 @@ class Main extends React.Component {
 
   componentDidMount(){
     ReactRouter.hashHistory.push('login');
+    console.log(store.getState());
+    debugger;
   }
 
   render() {
     return (
-      <div className="main full-width full-height fx-column fx-center">
+      <div className="main full-width full-height fx-column fx-center"><div className={"loaderWrap " + (store.getState().loader ? 'show' : 'hidden')}><div className="loader"></div></div>
         {
           this.props.children ? React.cloneElement(
             this.props.children,
