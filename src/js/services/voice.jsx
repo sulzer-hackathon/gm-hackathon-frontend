@@ -2,6 +2,13 @@ class VoiceService {
 
   constructor(){
     this.session;
+    this.recordingConfig = {
+      intro: 'I COMMAND THEE TO SPEAK!',
+      silenceDetection: true,
+      silenceLength: 10000,
+      maxRecordingWindow: 60000,
+      noiseSuppression: 0
+    }
   }
 
   startSpeechRecSession(){
@@ -9,24 +16,14 @@ class VoiceService {
   }
 
   beginRecording(){
-    var recordingConfig = {
-      intro: 'I COMMAND THEE TO SPEAK!',
-      silenceDetection: true,
-      silenceLength: 10000,
-      maxRecordingWindow: 60000,
-      noiseSuppression: 0
-    }
-
-    recordingHandle = gm.voice.startRecording(function finished(filePath){
-      recordingPath = filePath;
-      gm.voice.stopSpeechRecSession(this.session);
-    }, recordingConfig);
+    recordingHandle = gm.voice.startRecording((filePath)=>{
+      this.endRecording(filePath);
+    }, this.recordingConfig);
   }
 
-  topRecording() {
-    gm.voice.stopRecording(function(){}, function stopped() {
-      document.getElementById('play-recording').removeAttribute('disabled');
-    }, recordingHandle);
+  endRecording(filePath){
+    gm.voice.stopSpeechRecSession(this.session);
+    recordingPath = filePath;
   }
 
 
