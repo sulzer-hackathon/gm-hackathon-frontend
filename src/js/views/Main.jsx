@@ -24,9 +24,8 @@ class Main extends React.Component {
   }
 
   componentDidMount(){
+    snackbarContainer = document.querySelector('#snackbar');
     ReactRouter.hashHistory.push('login');
-    console.log(store.getState());
-    debugger;
   }
 
   render() {
@@ -40,6 +39,10 @@ class Main extends React.Component {
             })
           ) : ''
         }
+        <div id="snackbar" className="mdl-js-snackbar mdl-snackbar">
+          <div className="mdl-snackbar__text"></div>
+          <button className="mdl-snackbar__action" type="button"></button>
+        </div>
       </div>
     );
   }

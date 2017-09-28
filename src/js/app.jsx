@@ -17,3 +17,17 @@ const render = () => ReactDOM.render(
 
 render();
 store.subscribe(render);
+
+var snackbarContainer;
+var showSnackbar = (msg) => {
+  var handler = function(event) {
+    showSnackbarButton.style.backgroundColor = '';
+  };
+  var data = {
+    message: msg,
+    timeout: 2000,
+    // actionHandler: handler,
+    // actionText: 'Undo'
+  };
+  snackbarContainer.MaterialSnackbar.showSnackbar(data);
+};

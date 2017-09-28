@@ -6,18 +6,27 @@ class Login extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    if(!this.refs.username.value || !this.refs.password.value){
+      showSnackbar("Username or password blank");
+    } else {
+      this.handleLogin();
+    }
+  }
+
+  handleLogin(){
     store.dispatch({ type: 'LOADER_STATE', payload: true });
     adapterService.handleLogin(this.refs.username.value, this.refs.password.value).then((res)=>{
       store.dispatch({ type: 'LOADER_STATE', payload: false });
+      ReactRouter.hashHistory.push('dashboard');
     }).catch((err)=>{
-      debugger;
+      store.dispatch({ type: 'LOADER_STATE', payload: false });
+      showSnackbar(err.message);
     });
-    // ReactRouter.hashHistory.push('login');
   }
 
-  componentDidMount(){
-    console.log(this.props);
-  }
+  // componentDidMount(){
+  //   console.log(this.props);
+  // }
 
   render() {
     return (
@@ -29,7 +38,7 @@ class Login extends React.Component {
           </div>
         </div>
         <div className="logo-name fx-row fx-justify-content-center">
-          <strong>F</strong>ood<strong>F</strong>inder
+          FoodFinder
         </div>
         <form onSubmit={this.handleSubmit}>
           <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

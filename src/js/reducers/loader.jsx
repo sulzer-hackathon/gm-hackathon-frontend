@@ -4,7 +4,6 @@ var loader = (state = false, action) => {
     case LOADER_STATE:
       state = action.payload;
     default:
-      console.log("LOADER STATE CHANGE", state);
       return state
   }
 }
