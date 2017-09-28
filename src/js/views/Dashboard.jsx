@@ -10,7 +10,7 @@ class Dashboard extends React.Component {
 
   render() {
     return (
-      <div className="dashboard">
+      <div className="dashboard fx fx-center">
         Dashboard
         <br/>Lat: {this.gps.lat}
         <br/>Lng: {this.gps.lng}
