@@ -6,6 +6,7 @@ class Dashboard extends React.Component {
 
   componentDidMount(){
     this.gps = infoService.getInfo();
+    componentHandler.upgradeDom();
   }
 
   render() {
