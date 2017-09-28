@@ -25,7 +25,7 @@ class Main extends React.Component {
 
   componentDidMount(){
     snackbarContainer = document.querySelector('#snackbar');
-    ReactRouter.hashHistory.push('dashboard');
+    ReactRouter.hashHistory.push('login');
   }
 
   render() {
