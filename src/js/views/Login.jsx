@@ -31,6 +31,14 @@ class Login extends React.Component {
   render() {
     return (
       <div className="login">
+
+        <MaterialTextfield
+          onChange={() => {}}
+          label="Text..."
+          floatingLabel
+          style={{width: '200px'}}
+      />
+
         <div className="fx-row fx-justify-content-center">
           <div className="logo relative">
             <i className="material-icons menu">restaurant_menu</i>
