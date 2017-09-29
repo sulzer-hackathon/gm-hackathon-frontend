@@ -8,18 +8,25 @@ class WatsonService {
   }
 
   getToken(){
-    axios.get('https://stream.watsonplatform.net/authorization/api/v1/token?url=https://stream.watsonplatform.net/text-to-speech/api', {
-      headers: { 'Authorization': 'Basic NGEzODBkOTgtY2ZiYS00MDkyLWI0ZTMtN2ZjNDM2Y2M1ZTFmOnc1dklUTExnWHYwVg' }
-    }).then((res)=>{
-      debugger;
-    }).catch((err)=>{
-      debugger;
+    return axios.get('https://stream.watsonplatform.net/authorization/api/v1/token?url=https://stream.watsonplatform.net/speech-to-text/api', {
+      headers: { 'Authorization': 'Basic MDU0OWNlNzMtNDJkYi00NjAyLTg3M2UtMDFiNGIyMmIxMGViOlRGWHczQ3FrT3J6VA==' }
     });
   }
 
-  initSpeechToText(fileContents, callback){
+  stringToBlob(wavString){
+    var len = wavString.length;
+    var buf = new ArrayBuffer(len);
+    var view = new Uint8Array(buf);
+    for (var i = 0; i < len; i++) {
+      view[i] = wavString.charCodeAt(i) & 0xff;
+    }
+    return new Blob([view], {type: "audio/wav"});
+  }
+
+  initSpeechToText(fileContents, token, callback){
+    this.token = token;
     this.callback = callback;
-    this.audio = fileContents;
+    this.audio = this.stringToBlob(fileContents);
     this.websocket = new WebSocket(`wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize?watson-token=${this.token}&model=en-US_BroadbandModel`);
     this.websocket.onopen = (evt) => { this.onOpen(evt) };
     this.websocket.onclose = (evt) => { this.onClose(evt) };
@@ -31,10 +38,7 @@ class WatsonService {
     var message = {
       action: 'start',
       'content-type': 'audio/wav',
-      'interim_results': true,
-      'max-alternatives': 3,
-      keywords: ['colorado', 'tornado', 'tornadoes'],
-      'keywords_threshold': 0.5
+      'interim_results': true
     };
     this.websocket.send(JSON.stringify(message));
     this.websocket.send(this.audio);
@@ -42,7 +46,7 @@ class WatsonService {
   }
 
   onMessage(evt) {
-    this.callback(evt.data);
+    this.callback(evt);
   }
 
   onError(evt){

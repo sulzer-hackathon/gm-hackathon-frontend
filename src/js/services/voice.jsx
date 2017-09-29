@@ -6,7 +6,7 @@ class VoiceService {
       intro: 'Please steak your order!',
       silenceDetection: true,
       silenceLength: 10000,
-      maxRecordingWindow: 2000,
+      maxRecordingWindow: 5000,
       noiseSuppression: 0
     }
     this.recordingHandle;

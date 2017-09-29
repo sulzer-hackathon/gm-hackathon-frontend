@@ -27,11 +27,15 @@ class Dashboard extends React.Component {
 
   handleFileContent(fileContents){
     // send contents with watson service
-    watsonService.initSpeechToText(fileContents, this.handleWatsonResult);
+    watsonService.getToken().then((res)=>{
+      watsonService.initSpeechToText(fileContents, res.data.token, this.handleWatsonResult);
+    }).catch((err)=>{
+      debugger;
+    });
   }
 
   handleWatsonResult(result){
-    console.log('result',result);
+    console.log('result',result.data);
   }
 
   render() {
