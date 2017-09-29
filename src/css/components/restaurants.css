@@ -1,0 +1,18 @@
+.app-restaurant-item {
+    padding: 25px;
+}
+
+.app-restaurant-list {
+    overflow-x: scroll;
+}
+
+.app-restaurant {
+    overflow-x: scroll;
+}
+
+.app-restaurant > h4 {
+    margin-top: 0px;
+    padding-left: 50px;
+    font-style: italic;
+    font-weight: bold;
+}

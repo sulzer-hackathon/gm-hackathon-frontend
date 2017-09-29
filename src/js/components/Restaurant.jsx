@@ -6,6 +6,11 @@ class Restaurant extends React.Component {
     }
 
     render() {
-        return <h1>{this.props.item.name}</h1>;
+        return <div className="app-restaurant-item">
+            <div>
+                <img src={this.props.item.logoUrl} />
+                <h5>{this.props.item.name}</h5>
+            </div>
+        </div>;
     }
 }
