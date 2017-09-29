@@ -1,18 +1,19 @@
 class IOService {
 
   constructor(){
-
+    this.callback;
   }
 
-  readFile(filePath){
+  readFile(filePath, callback){
+    this.callback = callback;
     var contents = gm.io.readFile(filePath);
     if (contents !== null) {
-      processContents(contents);
+      this.processContents(contents);
     }
   }
 
   processContents(contents){
-    //TODO handle uploading contents to speech to text service
+    this.callback(contents);
   }
 
 }

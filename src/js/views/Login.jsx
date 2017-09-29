@@ -15,7 +15,7 @@ class Login extends React.Component {
 
   handleLogin(){
     store.dispatch({ type: 'LOADER_STATE', payload: true });
-    adapterService.handleLogin(this.refs.username.value, this.refs.password.value).then((res)=>{
+    webService.handleLogin(this.refs.username.value, this.refs.password.value).then((res)=>{
       store.dispatch({ type: 'LOADER_STATE', payload: false });
       ReactRouter.hashHistory.push('dashboard');
     }).catch((err)=>{
@@ -24,9 +24,9 @@ class Login extends React.Component {
     });
   }
 
-  // componentDidMount(){
-  //   console.log(this.props);
-  // }
+  componentDidMount(){
+    componentHandler.upgradeDom();
+  }
 
   render() {
     return (
@@ -54,7 +54,7 @@ class Login extends React.Component {
             LOG IN
           </button>
           <div className="additional">
-            Don't have an account?
+            <Link to="/register">Don't have an account?</Link>
           </div>
         </form>
       </div>

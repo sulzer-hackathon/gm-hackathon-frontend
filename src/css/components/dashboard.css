@@ -1,9 +1,21 @@
 .dashboard{
+  background-color: #131013;
+}
+.dashboard .recording{
+  width: 30vw;
+  position: relative;
+}
+.dashboard .recording img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.dashboard .recording:after{
+  position: absolute;
+  z-index: 1;
   width: 100%;
   height: 100%;
-  background-color: #131013;
-  background-image: url('/assets/images/recording.gif');
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-size: auto 30vh;
+  top:0;
+  left:0;
+  background: rgba(255, 0, 0, .5);
 }

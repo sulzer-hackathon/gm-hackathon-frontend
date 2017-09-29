@@ -25,12 +25,12 @@ class Main extends React.Component {
 
   componentDidMount(){
     snackbarContainer = document.querySelector('#snackbar');
-    ReactRouter.hashHistory.push('login');
+    ReactRouter.hashHistory.push('dashboard');
   }
 
   render() {
     return (
-      <div className="main full-width full-height fx-column fx-center"><div className={"loaderWrap " + (store.getState().loader ? 'show' : 'hidden')}><div className="loader"></div></div>
+      <div className="main full-width fx-column fx-center"><div className={"loaderWrap " + (store.getState().loader ? 'show' : 'hidden')}><div className="loader"></div></div>
         {
           this.props.children ? React.cloneElement(
             this.props.children,

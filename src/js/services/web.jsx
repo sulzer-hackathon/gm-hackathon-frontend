@@ -1,4 +1,4 @@
-class AdapterService {
+class WebService {
 
   constructor(){
     this.baseUrl = 'http://bmwbookingtoolservicetoronto.eu-central-1.elasticbeanstalk.com';
@@ -14,4 +14,4 @@ class AdapterService {
   }
 }
 
-var adapterService = new AdapterService();
+var webService = new WebService();

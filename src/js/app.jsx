@@ -9,6 +9,7 @@ const render = () => ReactDOM.render(
   <Router history={hashHistory}>
     <Route name="main" path="/" component={Main}>
       <Route name="login" path="login" component={Login}/>
+      <Route name="register" path="register" component={Register}/>
       <Route name="dashboard" path="dashboard" component={Dashboard}/>
     </Route>
   </Router>,

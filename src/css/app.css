@@ -30,8 +30,12 @@ html, body{
   margin: 0;
 }
 body{
-  font-family: QuicksandRegular;
   color: #04a9f4;
+  overflow-x: hidden;
+}
+body, h1, h2,
+h3, h4, h5, h6{
+  font-family: QuicksandRegular;
 }
 strong{
   font-family: QuicksandBold;
@@ -49,4 +53,23 @@ strong{
     top: 90px;
     height: calc(100vh - 90px);
   }
+}
+.mdl-textfield__input{
+  border-bottom:1px solid #fefefe;
+  color:#fefefe;
+  padding-left: 30px;
+}
+.mdl-textfield__label{
+  color:#fefefe;
+}
+.mdl-textfield__label i{
+  font-size: 18px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+.mdl-textfield{
+  width: 100%;
+}
+.mdl-textfield{
+  margin:-5px 0;
 }
