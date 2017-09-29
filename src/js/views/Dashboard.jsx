@@ -4,7 +4,7 @@ class Dashboard extends React.Component {
     this.gps = '';
     this.beginRecording = this.beginRecording.bind(this);
     this.readFile = this.readFile.bind(this);
-    this.handleFileContent = this.handleFileContent.bind(this);
+    // this.handleFileContent = this.handleFileContent.bind(this);
   }
 
   componentDidMount(){
@@ -21,18 +21,26 @@ class Dashboard extends React.Component {
   }
 
   readFile(filePath){
-    console.log('gofilepath',filePath.replace(/^.*[\\\/]/, ''));  //removes unneedd file path because it only needs filename
-    ioService.readFile(filePath.replace(/^.*[\\\/]/, ''), this.handleFileContent);
-  }
-
-  handleFileContent(fileContents){
-    // send contents with watson service
-    watsonService.getToken().then((res)=>{
-      watsonService.initSpeechToText(fileContents, res.data.token, this.handleWatsonResult);
-    }).catch((err)=>{
+    webService.getResults(fileContents).then((res)=>{
+      debugger;
+    }).catch((res)=>{
       debugger;
     });
   }
+
+  // readFile(filePath){
+  //   console.log('gofilepath',filePath.replace(/^.*[\\\/]/, ''));  //removes unneedd file path because it only needs filename
+  //   ioService.readFile(filePath.replace(/^.*[\\\/]/, ''), this.handleFileContent);
+  // }
+  //
+  // handleFileContent(fileContents){
+  //   // send contents with watson service
+  //   webService.getResults(fileContents).then((res)=>{
+  //     debugger;
+  //   }).catch((res)=>{
+  //     debugger;
+  //   });
+  // }
 
   handleWatsonResult(result){
     console.log('result',result.data);
@@ -67,7 +75,7 @@ class Dashboard extends React.Component {
             <img src="/assets/images/recording.gif" />
           </div>
           <div className="page-content">
-            Dashboard
+            Begin Recording
             <br/>Lat: {this.gps.lat}
             <br/>Lng: {this.gps.lng}
             <br/>Heading: {this.gps.heading}

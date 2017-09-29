@@ -26,8 +26,18 @@ class VoiceService {
   }
 
   endRecording(filePath){
+    debugger;
     gm.voice.stopSpeechRecSession(this.session);
+    gm.io.getResource(this.fullPathSuccess, this.fullPathFail, filePath.replace(/^.*[\\\/]/, ''));
+  }
+
+  fullPathSuccess(filePath){
+    debugger;
     this.callback(filePath);
+  }
+
+  fullPathFail(err){
+    debugger;
   }
 
 }
