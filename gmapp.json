@@ -1,14 +1,14 @@
 {
   "name":"app",
-  "id":"92504176",
+  "id":"92362385",
   "template": "Blank",
   "version": "0.0.0",
   "src": "src",
   "dist": "dist",
   "main": "index.html",
   "icon": "Icon.png",
-  "developer": "Elliot",
+  "developer": "Julian",
   "category": "General",
-  "type": "RemoteHigh",
-  "description": "Generated on 9/26/2017, 8:35:14 PM by ngi-sdk version "
+  "type": "RemoteLow",
+  "description": "Generated on 9/29/2017, 1:19:31 AM by ngi-sdk version "
 }

@@ -8,9 +8,10 @@ const hashHistory = ReactRouter.hashHistory;
 const render = () => ReactDOM.render(
   <Router history={hashHistory}>
     <Route name="main" path="/" component={Main}>
-      <Route name="login" path="login" component={Login}/>
-      <Route name="register" path="register" component={Register}/>
-      <Route name="dashboard" path="dashboard" component={Dashboard}/>
+      <Route name="login" path="login" component={Login} />
+      <Route name="register" path="register" component={Register} />
+      <Route name="dashboard" path="dashboard" component={Dashboard} />
+      <Route name="restaurants" path="restaurants" component={Restaurants} />
     </Route>
   </Router>,
   document.getElementById('root')
@@ -21,7 +22,7 @@ store.subscribe(render);
 
 var snackbarContainer;
 var showSnackbar = (msg) => {
-  var handler = function(event) {
+  var handler = function (event) {
     showSnackbarButton.style.backgroundColor = '';
   };
   var data = {
