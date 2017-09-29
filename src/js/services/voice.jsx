@@ -3,7 +3,6 @@ class VoiceService {
   constructor() {
     this.session;
     this.recordingConfig = {
-      intro: 'Please steak your order!',
       silenceDetection: true,
       silenceLength: 10000,
       maxRecordingWindow: 5000,
@@ -14,8 +13,9 @@ class VoiceService {
     this.callback;
   }
 
-  startSpeechRecSession(callback) {
+  startSpeechToText(callback, intro) {
     this.callback = callback;
+    this.recordingConfig.intro = intro;
     this.session = gm.voice.startSpeechRecSession(this.beginRecording);
   }
 
@@ -27,11 +27,14 @@ class VoiceService {
 
   endRecording(filePath) {
     gm.voice.stopSpeechRecSession(this.session);
-    
-    if (this.callback)
-        this.callback(gm.filesystem.readFile(filePath.replace(/^.*[\\\/]/, ''), { encoding : null}));
-    // gm.io.readFile((fileContents) => { this.callback(fileContents); }, this.fullPathFail, 'RecAudio_13.wav');//filePath.replace(/^.*[\\\/]/, ''));
-    // gm.io.getResource(this.fullPathSuccess, this.fullPathFail, filePath.replace(/^.*[\\\/]/, ''));
+
+    var fileContents = gm.filesystem.readFile(filePath.replace(/^.*[\\\/]/, ''), { encoding: null });
+    webService.speechToText(fileContents).then((res) => {
+      if (this.callback)
+        this.callback(res.data.command);
+    }).catch((res) => {
+      debugger;
+    });
   }
 
   fullPathSuccess(filePath) {
