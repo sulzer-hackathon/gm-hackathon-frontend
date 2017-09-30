@@ -33,7 +33,7 @@ class VoiceService {
       if (this.callback)
         this.callback(res.data.command);
     }).catch((res) => {
-      debugger;
+      this.callback(null);
     });
   }
 
