@@ -5,7 +5,7 @@ class MenuItem extends React.Component {
     }
 
     render() {
-        return <div className="app-menu-item">
+        return <div className="app-menu-item" style={{ transitionDelay: `.${this.props.delay * 2}s`, zIndex: (100 - this.props.delay), position: 'relative' }}>
             <div>
                 <h5>{this.props.index}.&nbsp;{this.props.item.name}</h5>
                 {/* <p>{this.props.item.description}</p> */}

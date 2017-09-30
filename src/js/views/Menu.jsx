@@ -5,11 +5,18 @@ class Menu extends React.Component {
         console.log(this.props);
         console.log(this.props.menuItems);
 
+        this.state = {
+            menuItems: []
+        }
+
         this.onClick = this.onClick.bind(this);
         this.onTranscript = this.onTranscript.bind(this);
     }
 
     componentDidMount() {
+        this.state = {
+            menuItems: this.props.menuItems
+        }
         window.setTimeout(() => {
             this.triggerVoiceCommand();
         }, 3000);
@@ -47,12 +54,14 @@ class Menu extends React.Component {
 
     render() {
         var items = [];
-        this.props.menuItems.forEach((item, index) => {
-            items.push(<MenuItem onClick={this.onClick} key={index} item={item} index={index + 1} />);
+        this.state.menuItems.forEach((item, index) => {
+            items.push(<MenuItem onClick={this.onClick} key={index} item={item} index={index + 1} delay={index} />);
         });
         return <div className="full-width app-menu">
             <h3>{this.props.restaurantName}&nbsp;-&nbsp;Menu Items</h3>
-            <div className="fx-row fx-wrap full-width app-menu-list">{items}</div>
+            <ReactCSSTransitionGroup component="div" className="fx-row full-width app-menu-list" transitionName="slide" transitionEnterTimeout={250} transitionLeaveTimeout={250}>
+                {items}
+            </ReactCSSTransitionGroup>
         </div>;
     }
 }

@@ -32,3 +32,24 @@
 .fade-leave.example-leave-active {
 	opacity: 0;
 }
+
+.slide-enter {
+  opacity: 0;
+}
+.slide-enter.slide-enter-active {
+	opacity: 1;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.slide-leave {
+	opacity: 1;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.slide-leave.example-leave-active {
+	opacity: 0;
+}
