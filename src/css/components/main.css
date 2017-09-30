@@ -1,7 +1,14 @@
 .main{
-  background-color: #0e0e0e;
+  background-color: #131013;
   position: relative;
   min-height: 100%;
+}
+#page{
+  transition: .25s all;
+  opacity: 1;
+}
+#page.fadeout{
+  opacity: 0;
 }
 .main .loaderWrap{
   position: fixed;

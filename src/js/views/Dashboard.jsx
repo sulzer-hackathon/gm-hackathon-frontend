@@ -13,7 +13,7 @@ class Dashboard extends React.Component {
   }
 
   logout() {
-    ReactRouter.hashHistory.push('login');
+    goToPath('login');
   }
 
   beginRecording() {
@@ -32,7 +32,7 @@ class Dashboard extends React.Component {
         setTimeout(()=>{
           this.props.updateRestaurants(res.data.restaurants);
           store.dispatch({ type: UPDATE_SESSION, payload: { recording: false } });
-        },20000);
+        },1500);
       }).catch((res) => {
         store.dispatch({ type: UPDATE_SESSION, payload: { recording: false, searchNotFound: true } });
       });
@@ -56,7 +56,7 @@ class Dashboard extends React.Component {
         <div className={store.getState().app.searchString && !store.getState().app.searchNotFound ? 'hidden' : 'show'}>
           <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onClick={this.beginRecording} disabled={disabled}>Start</button>
         </div>
-        <div className={"loaderWrap " + (store.getState().app.searchString && !store.getState().app.searchNotFound ? 'show' : 'hidden')}>
+        <div className={"loader-wrap " + (store.getState().app.searchString && !store.getState().app.searchNotFound ? 'show' : 'hidden')}>
           <div className="loader"></div>
         </div>
         {/*

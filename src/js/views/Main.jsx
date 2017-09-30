@@ -31,13 +31,13 @@ class Main extends React.Component {
   updateRestaurants(restaurants) {
     console.log('updateRestaurants', restaurants);
     this.setState({ restaurants: restaurants });
-    ReactRouter.hashHistory.push('restaurants');
+    goToPath('restaurants');
   }
 
   updateMenu(menuItems) {
     console.log('updateMenu', menuItems);
     this.setState({ menuItems: menuItems });
-    ReactRouter.hashHistory.push('menu');
+    goToPath('menu');
   }
 
   cancelSelection() {
@@ -50,7 +50,7 @@ class Main extends React.Component {
 
   componentDidMount() {
     snackbarContainer = document.querySelector('#snackbar');
-    ReactRouter.hashHistory.push('dashboard');
+    goToPath('login');
   }
 
   render() {
@@ -60,21 +60,32 @@ class Main extends React.Component {
         <div className={"loaderWrap " + (store.getState().loader ? 'show' : 'hidden')}>
           <div className="loader"></div>
         </div>
-        {
-          this.props.children ? React.cloneElement(this.props.children, Object.assign({}, this.state, {
-            /*handleLogin: this.handleLogin,*/
-            updateRestaurants: this.updateRestaurants,
-            updateMenu: this.updateMenu,
-            cancelSelection: this.cancelSelection,
-            finalizeOrder: this.finalizeOrder
+
+        <div id="page">
+          {
+            this.props.children ? React.cloneElement(this.props.children, Object.assign({}, this.state, {
+              /*handleLogin: this.handleLogin,*/
+              updateRestaurants: this.updateRestaurants,
+              updateMenu: this.updateMenu,
+              cancelSelection: this.cancelSelection,
+              finalizeOrder: this.finalizeOrder
+            }
+            )) : ''
           }
-          )) : ''
-        }
+        </div >
         <div id="snackbar" className="mdl-js-snackbar mdl-snackbar">
           <div className="mdl-snackbar__text"></div>
           <button className="mdl-snackbar__action" type="button"></button>
         </div>
-      </div>
+      </div >
     );
   }
+}
+
+var goToPath = (path) => {
+  document.getElementById('page').classList.add('fadeout');
+  setTimeout(() => {
+    ReactRouter.hashHistory.push(path);
+    document.getElementById('page').classList.remove('fadeout');
+  }, 300);
 }

@@ -28,7 +28,7 @@
   height: 100%;
   z-index: 3;
 }
-.dashboard .loaderWrap{
-  width: 30vw;
-  height: 30vw;
+.dashboard .loader-wrap{
+  width: 100px;
+  height: 100px;
 }
