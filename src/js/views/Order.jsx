@@ -1,10 +1,11 @@
-class Register extends React.Component {
+class Order extends React.Component {
   constructor (props) {
     super(props);
 
   }
 
   componentDidMount(){
+    // total price menuitems
   }
 
   render() {
