@@ -1,33 +1,44 @@
 class Login extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.onKeypadSubmit = this.onKeypadSubmit.bind(this);
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    if(!this.refs.key.value){
+    if (!this.refs.key.value) {
       showSnackbar("Key blank");
     } else {
       this.handleLogin();
     }
   }
 
-  handleLogin(){
+  handleLogin() {
     store.dispatch({ type: 'LOADER_STATE', payload: true });
-    webService.handleLogin(this.refs.key.value).then((res)=>{
-      setTimeout(()=>{
+    webService.handleLogin(this.refs.key.value).then((res) => {
+      setTimeout(() => {
         store.dispatch({ type: 'LOADER_STATE', payload: false });
         ReactRouter.hashHistory.push('dashboard');
-      },1000);
-    }).catch((err)=>{
+      }, 1000);
+    }).catch((err) => {
       store.dispatch({ type: 'LOADER_STATE', payload: false });
       showSnackbar(err.message);
     });
   }
 
-  componentDidMount(){
+  componentDidMount() {
     // componentHandler.upgradeDom();
+    gm.info.getVehicleConfiguration(() => {
+      gm.widgets.keypad.initKeypad({
+        mainContent: 'root', onSubmit: this.onKeypadSubmit, onCancel: () => { }
+      });
+    });
+  }
+
+  onKeypadSubmit(response) {
+    this.refs.key.value = response.value;
+    response.element.setAttribute('data-inputvalue', response.value);
   }
 
   render() {
@@ -44,7 +55,7 @@ class Login extends React.Component {
         </div>
         <form onSubmit={this.handleSubmit}>
           <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input className="mdl-textfield__input" type="text" ref="key" placeholder="Enter your key"/>
+            <input className="mdl-textfield__input" type="text" ref="key" placeholder="Enter your key" />
             {/*<label className="mdl-textfield__label" htmlFor="sample3"><i className="material-icons">mail_outline</i>Key</label>*/}
           </div>
           <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
