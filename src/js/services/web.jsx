@@ -1,7 +1,8 @@
 class WebService {
 
   constructor() {
-    this.baseUrl = 'http://localhost:8080/api/';
+    // this.baseUrl = 'http://localhost:8080/api/';
+    this.baseUrl = 'http://gmhackathon-prod.us-east-1.elasticbeanstalk.com/api/';
   }
 
   handleLogin(key) {
