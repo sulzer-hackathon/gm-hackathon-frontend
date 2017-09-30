@@ -1,14 +1,12 @@
 class WebService {
 
   constructor() {
-    this.baseUrl = 'http://172.20.10.2:8080/api/';
+    this.baseUrl = 'http://localhost:8080/api/';
   }
 
   handleLogin(key) {
-    return axios.get(`${this.baseUrl}user/login`, {
-      params: {
-        userID: key,
-      }
+    return axios.post(`${this.baseUrl}user/login`, {
+      userID: key,
     });
   }
 
