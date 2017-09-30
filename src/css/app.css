@@ -28,6 +28,7 @@ html, body{
   display: block;
   padding: 0;
   margin: 0;
+  background: #131013;
 }
 body{
   color: #04a9f4;
@@ -47,6 +48,7 @@ strong{
   display: block;
   padding: 0;
   margin: 0;
+  background: #131013;
 }
 @media (max-width: 800px) {
   #root{

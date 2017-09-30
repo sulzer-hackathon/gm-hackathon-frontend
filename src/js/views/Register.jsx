@@ -11,7 +11,7 @@ class Register extends React.Component {
   }
 
   goBack(){
-    ReactRouter.hashHistory.push('login');
+    goToPath('login');
   }
 
   save(){
@@ -26,7 +26,7 @@ class Register extends React.Component {
     store.dispatch({ type: 'LOADER_STATE', payload: true });
     webService.handleLogin(this.refs.username.value, this.refs.password.value).then((res)=>{
       store.dispatch({ type: 'LOADER_STATE', payload: false });
-      ReactRouter.hashHistory.push('dashboard');
+      goToPath('dashboard');
     }).catch((err)=>{
       store.dispatch({ type: 'LOADER_STATE', payload: false });
       showSnackbar(err.message);
