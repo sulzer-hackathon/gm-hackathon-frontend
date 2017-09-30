@@ -17,6 +17,7 @@ var Login = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
 
     _this.handleSubmit = _this.handleSubmit.bind(_this);
+    _this.onKeypadSubmit = _this.onKeypadSubmit.bind(_this);
     return _this;
   }
 
@@ -47,7 +48,20 @@ var Login = function (_React$Component) {
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
+      var _this2 = this;
+
       // componentHandler.upgradeDom();
+      gm.info.getVehicleConfiguration(function () {
+        gm.widgets.keypad.initKeypad({
+          mainContent: 'root', onSubmit: _this2.onKeypadSubmit, onCancel: function onCancel() {}
+        });
+      });
+    }
+  }, {
+    key: 'onKeypadSubmit',
+    value: function onKeypadSubmit(response) {
+      this.refs.key.value = response.value;
+      response.element.setAttribute('data-inputvalue', response.value);
     }
   }, {
     key: 'render',
