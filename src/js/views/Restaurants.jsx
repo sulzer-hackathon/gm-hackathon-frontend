@@ -45,11 +45,13 @@ class Restaurants extends React.Component {
     render() {
         var items = [];
         this.props.restaurants.forEach((item, index) => {
-            items.push(<Restaurant onClick={this.onClick} key={index} item={item} index={index + 1} />);
+            items.push(<Restaurant onClick={this.onClick} key={index} item={item} index={index + 1} delay={index}/>);
         });
         return <div className="full-width app-restaurant">
             <h3>Restaurants</h3>
-            <div className="fx-row full-width app-restaurant-list">{items}</div>
+              <ReactCSSTransitionGroup component="div" className="fx-row full-width app-restaurant-list" transitionName="slide" transitionEnterTimeout={250} transitionLeaveTimeout={250}>
+                {items}
+              </ReactCSSTransitionGroup>
         </div>;
     }
 }

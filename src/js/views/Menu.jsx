@@ -43,11 +43,15 @@ class Menu extends React.Component {
     render() {
         var items = [];
         this.props.menuItems.forEach((item, index) => {
-            items.push(<MenuItem onClick={this.onClick} key={index} item={item} index={index + 1} />);
+            items.push(<MenuItem onClick={this.onClick} key={index} item={item} index={index + 1} delay={index}/>);
         });
         return <div className="full-width app-menu">
             <h3>Menu Items</h3>
-            <div className="fx-row fx-wrap full-width app-menu-list">{items}</div>
+            <div className="fx-row fx-wrap full-width app-menu-list">
+              <ReactCSSTransitionGroup transitionName="slide" transitionEnterTimeout={250} transitionLeaveTimeout={250}>
+                {items}
+              </ReactCSSTransitionGroup>
+            </div>
         </div>;
     }
 }
