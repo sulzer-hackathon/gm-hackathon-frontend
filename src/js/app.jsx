@@ -8,6 +8,7 @@ const hashHistory = ReactRouter.hashHistory;
 const render = () => ReactDOM.render(
   <Router history={hashHistory}>
     <Route name="main" path="/" component={Main}>
+    <Route name="menu" path="menu" component={Menu} />
       <Route name="login" path="login" component={Login} />
       <Route name="register" path="register" component={Register} />
       <Route name="dashboard" path="dashboard" component={Dashboard} />

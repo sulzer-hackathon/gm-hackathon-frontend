@@ -2,7 +2,7 @@ class Main extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { restaurants: [] };
+    this.state = { restaurants: [], menuItems: [] };
 
     // var vinElem = document.getElementById('vin');
     // gm.info.getVehicleConfiguration(function(data) {
@@ -25,12 +25,19 @@ class Main extends React.Component {
     // }, ['average_speed']);
 
     this.updateRestaurants = this.updateRestaurants.bind(this);
+    this.updateMenu = this.updateMenu.bind(this);
   }
 
   updateRestaurants(restaurants) {
-    console.log(restaurants);
+    console.log('updateRestaurants', restaurants);
     this.setState({ restaurants: restaurants });
     ReactRouter.hashHistory.push('restaurants');
+  }
+
+  updateMenu(menuItems) {
+    console.log('updateMenu', menuItems);
+    this.setState({ menuItems: menuItems });
+    ReactRouter.hashHistory.push('menu');
   }
 
   componentDidMount() {
@@ -48,7 +55,8 @@ class Main extends React.Component {
         {
           this.props.children ? React.cloneElement(this.props.children, Object.assign({}, this.state, {
             /*handleLogin: this.handleLogin,*/
-            updateRestaurants: this.updateRestaurants
+            updateRestaurants: this.updateRestaurants,
+            updateMenu: this.updateMenu
           }
           )) : ''
         }
