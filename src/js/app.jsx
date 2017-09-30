@@ -13,6 +13,7 @@ const render = () => ReactDOM.render(
       <Route name="register" path="register" component={Register} />
       <Route name="dashboard" path="dashboard" component={Dashboard} />
       <Route name="restaurants" path="restaurants" component={Restaurants} />
+      <Route name="order" path="order" component={Order} />
     </Route>
   </Router>,
   document.getElementById('root')
