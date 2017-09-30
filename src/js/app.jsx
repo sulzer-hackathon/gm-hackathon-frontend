@@ -4,6 +4,7 @@ const DefaultRoute = ReactRouter.DefaultRoute;
 const Link = ReactRouter.Link;
 const RouteHandler = ReactRouter.RouteHandler;
 const hashHistory = ReactRouter.hashHistory;
+const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 const render = () => ReactDOM.render(
   <Router history={hashHistory}>

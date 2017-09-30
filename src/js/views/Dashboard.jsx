@@ -13,7 +13,7 @@ class Dashboard extends React.Component {
   }
 
   logout() {
-    goToPath('login');
+    ReactRouter.hashHistory.push('login');
   }
 
   beginRecording() {
