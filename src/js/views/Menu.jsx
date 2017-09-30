@@ -26,8 +26,9 @@ class Menu extends React.Component {
             if (res.data.cancellation) {
                 this.props.cancelSelection();
             } else if (res.data.total) {
-                voiceService.startTextToSpeech(() => { }, 'Thank you for your order, your final is ' + res.data.total + ' Dollar.')
-                showSnackbar('Thank you for your order, your final is ' + res.data.total + ' US Dollar.');
+                var totalSummary = 'Thank you for your order, your final is ' + Math.trunc(res.data.total) + ' Dollar and ' + Math.trunc((res.data.total - Math.floor(res.data.total)) * 100) + ' Cents.';
+                voiceService.startTextToSpeech(() => { }, totalSummary);
+                showSnackbar(totalSummary);
                 this.props.finalizeOrder();
             } else if (res.data.menuItems) {
                 voiceService.startSpeechToText(this.onTranscript, 'Please choose another item or say order to finish!');
