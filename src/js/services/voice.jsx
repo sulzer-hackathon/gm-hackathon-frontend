@@ -13,6 +13,10 @@ class VoiceService {
     this.callback;
   }
 
+  startTextToSpeech(callback, text) {
+    gm.voice.startTTS(callback, text);
+  }
+
   startSpeechToText(callback, intro) {
     this.callback = callback;
     this.recordingConfig.intro = intro;

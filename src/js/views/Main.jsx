@@ -40,6 +40,14 @@ class Main extends React.Component {
     ReactRouter.hashHistory.push('menu');
   }
 
+  cancelSelection() {
+    ReactRouter.hashHistory.push('dashboard');
+  }
+
+  finalizeOrder() {
+    ReactRouter.hashHistory.push('dashboard');
+  }
+
   componentDidMount() {
     snackbarContainer = document.querySelector('#snackbar');
     ReactRouter.hashHistory.push('dashboard');
@@ -56,7 +64,9 @@ class Main extends React.Component {
           this.props.children ? React.cloneElement(this.props.children, Object.assign({}, this.state, {
             /*handleLogin: this.handleLogin,*/
             updateRestaurants: this.updateRestaurants,
-            updateMenu: this.updateMenu
+            updateMenu: this.updateMenu,
+            cancelSelection: this.cancelSelection,
+            finalizeOrder: this.finalizeOrder
           }
           )) : ''
         }

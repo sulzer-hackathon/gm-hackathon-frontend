@@ -20,11 +20,17 @@ class Menu extends React.Component {
     }
 
     onTranscript(command) {
-        console.log(command);
         webService.executeCommand(command).then((res) => {
-            console.log(res.data);
+            if (res.data.cancellation) {
+                this.props.cancelSelection();
+            } else if (res.data.total) {
+                voiceService.startTextToSpeech(() => { }, 'Thank you for your order, your final is ' + res.data.total + ' US dollar.')
+                this.props.finalizeOrder();
+            } else if (res.data.menuItems) {
+                voiceService.startSpeechToText(this.onTranscript, 'Please choose another item or say order to finish!');
+            }
         }).catch((res) => {
-            debugger;
+            voiceService.startSpeechToText(this.onTranscript, 'Sorry, I did not understand. Please choose an item!');
         });
     }
 
