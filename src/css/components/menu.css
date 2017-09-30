@@ -1,18 +1,18 @@
-.app-restaurant-item {
+.app-menu-item {
     padding: 25px;
 }
 
-.app-restaurant-list {
+.app-menu-list {
     overflow-x: scroll;
 }
 
-.app-restaurant {
+.app-menu {
     overflow-x: scroll;
 }
 
-.app-restaurant > h3 {
+.app-menu > h3 {
     text-decoration: underline;
-    margin-top: 0px;
+    margin-top: 25px;
     padding-left: 50px;
     font-style: italic;
     font-weight: bold;

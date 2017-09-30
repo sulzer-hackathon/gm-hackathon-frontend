@@ -20,6 +20,13 @@
   flex-direction: column;
 }
 
+.fx-wrap {
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+  display: flex;   
+  flex-wrap: wrap;
+}
+
 .fx-row {
   display: -webkit-flex;
   display: -moz-flex;
