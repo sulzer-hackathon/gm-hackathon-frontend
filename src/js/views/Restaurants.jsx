@@ -5,6 +5,10 @@ class Restaurants extends React.Component {
         console.log(this.props);
         console.log(this.props.restaurants);
 
+        this.state = {
+          restaurants: []
+        }
+
         this.onClick = this.onClick.bind(this);
         this.onTranscript = this.onTranscript.bind(this);
 
@@ -12,6 +16,9 @@ class Restaurants extends React.Component {
     }
 
     componentDidMount() {
+      this.setState({
+        restaurants: this.props.restaurants
+      });
         window.setTimeout(() => {
             this.triggerVoiceCommand();
         }, 3000);
@@ -44,14 +51,14 @@ class Restaurants extends React.Component {
 
     render() {
         var items = [];
-        this.props.restaurants.forEach((item, index) => {
+        this.state.restaurants.forEach((item, index) => {
             items.push(<Restaurant onClick={this.onClick} key={index} item={item} index={index + 1} delay={index}/>);
         });
         return <div className="full-width app-restaurant">
             <h3>Restaurants</h3>
-              <ReactCSSTransitionGroup component="div" className="fx-row full-width app-restaurant-list" transitionName="slide" transitionEnterTimeout={250} transitionLeaveTimeout={250}>
-                {items}
-              </ReactCSSTransitionGroup>
+            <ReactCSSTransitionGroup component="div" className="fx-row full-width app-restaurant-list" transitionName="slide" transitionEnterTimeout={250} transitionLeaveTimeout={250}>
+              {items}
+            </ReactCSSTransitionGroup>
         </div>;
     }
 }

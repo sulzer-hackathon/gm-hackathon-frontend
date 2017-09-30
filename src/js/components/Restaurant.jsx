@@ -5,7 +5,7 @@ class Restaurant extends React.Component {
     }
 
     render() {
-        return <div className="app-restaurant-item" style={{transitionDelay: '.${this.props.delay * 2}s'}}>
+        return <div className="app-restaurant-item" style={{ transitionDelay: `.${this.props.delay * 2}s`, zIndex: (100 - this.props.delay), position: 'relative' }}>
             <div>
                 <img src={this.props.item.logoUrl} />
                 <h5><b>{this.props.index}.</b>&nbsp;{this.props.item.name}</h5>
