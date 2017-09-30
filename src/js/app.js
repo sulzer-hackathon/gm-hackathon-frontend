@@ -40,5 +40,10 @@ var showSnackbar = function showSnackbar(msg) {
   //   // actionText: 'Undo'
   // };
   // snackbarContainer.MaterialSnackbar.showSnackbar(data);
-  alert(msg);
+  gm.ui.showAlert(null, null, { alertTitle : 'Alert', alertDetail: msg, primaryButtonText : 'Ok', primaryAction : primaryAction });
 };
+
+var primaryAction = function actionCallback() {
+
+};
+

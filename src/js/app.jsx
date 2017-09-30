@@ -9,7 +9,7 @@ const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 const render = () => ReactDOM.render(
   <Router history={hashHistory}>
     <Route name="main" path="/" component={Main}>
-    <Route name="menu" path="menu" component={Menu} />
+      <Route name="menu" path="menu" component={Menu} />
       <Route name="login" path="login" component={Login} />
       <Route name="register" path="register" component={Register} />
       <Route name="dashboard" path="dashboard" component={Dashboard} />
@@ -35,5 +35,9 @@ var showSnackbar = (msg) => {
   //   // actionText: 'Undo'
   // };
   // snackbarContainer.MaterialSnackbar.showSnackbar(data);
-  alert(msg);
+  gm.ui.showAlert(null, null, { alertTitle: 'Alert', alertDetail: msg, primaryButtonText: 'Ok', primaryAction: primaryAction });
+};
+
+var primaryAction = function actionCallback() {
+
 };
