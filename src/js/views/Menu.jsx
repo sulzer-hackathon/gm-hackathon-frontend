@@ -1,14 +1,12 @@
-class Restaurants extends React.Component {
+class Menu extends React.Component {
 
     constructor(props) {
         super(props);
         console.log(this.props);
-        console.log(this.props.restaurants);
+        console.log(this.props.menuItems);
 
         this.onClick = this.onClick.bind(this);
         // this.triggerVoiceCommand = this.triggerVoiceCommand.bind(this);
-
-
     }
 
     componentDidMount() {
