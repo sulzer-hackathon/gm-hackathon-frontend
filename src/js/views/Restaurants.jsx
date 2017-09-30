@@ -25,13 +25,18 @@ class Restaurants extends React.Component {
 
     onTranscript(command) {
         console.log(command);
+        store.dispatch({ type: 'LOADER_STATE', payload: true });
         webService.executeCommand(command).then((res) => {
+            store.dispatch({ type: 'LOADER_STATE', payload: false });
             if (res.data.cancellation) {
                 this.props.cancelSelection();
             } else {
                 this.props.updateMenu(res.data.menuItems);
+                this.props.updateRestaurantName(res.data.restaurantName);
+                ReactRouter.hashHistory.push('menu');
             }
         }).catch((res) => {
+            store.dispatch({ type: 'LOADER_STATE', payload: false });
             voiceService.startSpeechToText(this.onTranscript, 'Sorry, I did not understand. Please choose a restaurant by number!');
         });
     }

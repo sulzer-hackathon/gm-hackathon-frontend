@@ -20,7 +20,9 @@ class VoiceService {
   startSpeechToText(callback, intro) {
     this.callback = callback;
     this.recordingConfig.intro = intro;
-    this.session = gm.voice.startSpeechRecSession(this.beginRecording);
+    this.session = gm.voice.startSpeechRecSession(this.beginRecording, (error) => {
+      debugger;
+    });
   }
 
   beginRecording() {
@@ -31,12 +33,16 @@ class VoiceService {
 
   endRecording(filePath) {
     gm.voice.stopSpeechRecSession(this.session);
+    
+    store.dispatch({ type: 'LOADER_STATE', payload: true });
 
     var fileContents = gm.filesystem.readFile(filePath.replace(/^.*[\\\/]/, ''), { encoding: null });
     webService.speechToText(fileContents).then((res) => {
+      store.dispatch({ type: 'LOADER_STATE', payload: false });
       if (this.callback)
         this.callback(res.data.command);
     }).catch((res) => {
+      store.dispatch({ type: 'LOADER_STATE', payload: false });
       this.callback(null);
     });
   }

@@ -24,15 +24,19 @@ class Dashboard extends React.Component {
   }
 
   onTranscript(command) {
-    if(command == null){
+    if (command == null) {
       store.dispatch({ type: UPDATE_SESSION, payload: { recording: false, searchNotFound: true } });
     } else {
       store.dispatch({ type: UPDATE_SESSION, payload: { searchString: command } });
       webService.executeCommand(command).then((res) => {
-        setTimeout(()=>{
-          this.props.updateRestaurants(res.data.restaurants);
-          store.dispatch({ type: UPDATE_SESSION, payload: { recording: false } });
-        },1500);
+        if (res.data.cancellation) {
+          store.dispatch({ type: UPDATE_SESSION, payload: { recording: false, searchNotFound: true } });
+        } else {
+          setTimeout(() => {
+            this.props.updateRestaurants(res.data.restaurants);
+            store.dispatch({ type: UPDATE_SESSION, payload: { recording: false } });
+          }, 1500);
+        }
       }).catch((res) => {
         store.dispatch({ type: UPDATE_SESSION, payload: { recording: false, searchNotFound: true } });
       });
@@ -48,13 +52,13 @@ class Dashboard extends React.Component {
     return (
       <div className="dashboard mdl-layout__content fx-column fx-center">
         <div className={store.getState().app.searchNotFound ? 'show' : 'hidden'}>Search not found</div>
-        <div className={store.getState().app.searchString && !store.getState().app.searchNotFound ? 'show' : 'hidden'}>Searhing: {store.getState().app.searchString}</div>
+        <div className={store.getState().app.searchString && !store.getState().app.searchNotFound ? 'show' : 'hidden'}>Searching: {store.getState().app.searchString}</div>
         <div className={"recording " + (store.getState().app.searchString && !store.getState().app.searchNotFound ? 'hidden' : 'show')}>
           <img src="/assets/images/recording.gif" />
-          <img src="/assets/images/recording.png" className={"still " + (store.getState().app.recording ? 'hidden' : 'show')}/>
+          <img src="/assets/images/recording.png" className={"still " + (store.getState().app.recording ? 'hidden' : 'show')} />
         </div>
         <div className={store.getState().app.searchString && !store.getState().app.searchNotFound ? 'hidden' : 'show'}>
-          <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onClick={this.beginRecording} disabled={disabled}>Start</button>
+          <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onClick={this.beginRecording} disabled={disabled}>Start Ordering</button>
         </div>
         <div className={"loader-wrap " + (store.getState().app.searchString && !store.getState().app.searchNotFound ? 'show' : 'hidden')}>
           <div className="loader"></div>

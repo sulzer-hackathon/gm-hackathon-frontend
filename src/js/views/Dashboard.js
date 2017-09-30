@@ -81,7 +81,7 @@ var Dashboard = function (_React$Component) {
         React.createElement(
           'div',
           { className: store.getState().app.searchString && !store.getState().app.searchNotFound ? 'show' : 'hidden' },
-          'Searhing: ',
+          'Searching: ',
           store.getState().app.searchString
         ),
         React.createElement(
@@ -96,7 +96,7 @@ var Dashboard = function (_React$Component) {
           React.createElement(
             'button',
             { className: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect', onClick: this.beginRecording, disabled: disabled },
-            'Start'
+            'Start Ordering'
           )
         ),
         React.createElement(

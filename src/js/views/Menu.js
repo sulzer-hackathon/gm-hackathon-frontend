@@ -47,7 +47,8 @@ var Menu = function (_React$Component) {
                 if (res.data.cancellation) {
                     _this3.props.cancelSelection();
                 } else if (res.data.total) {
-                    voiceService.startTextToSpeech(function () {}, 'Thank you for your order, your final is ' + res.data.total + ' US dollar.');
+                    voiceService.startTextToSpeech(function () {}, 'Thank you for your order, your final is ' + res.data.total + ' Dollar.');
+                    showSnackbar('Thank you for your order, your final is ' + res.data.total + ' US Dollar.');
                     _this3.props.finalizeOrder();
                 } else if (res.data.menuItems) {
                     voiceService.startSpeechToText(_this3.onTranscript, 'Please choose another item or say order to finish!');

@@ -20,16 +20,20 @@ class Menu extends React.Component {
     }
 
     onTranscript(command) {
+        store.dispatch({ type: 'LOADER_STATE', payload: true });
         webService.executeCommand(command).then((res) => {
+            store.dispatch({ type: 'LOADER_STATE', payload: false });
             if (res.data.cancellation) {
                 this.props.cancelSelection();
             } else if (res.data.total) {
-                voiceService.startTextToSpeech(() => { }, 'Thank you for your order, your final is ' + res.data.total + ' US dollar.')
+                voiceService.startTextToSpeech(() => { }, 'Thank you for your order, your final is ' + res.data.total + ' Dollar.')
+                showSnackbar('Thank you for your order, your final is ' + res.data.total + ' US Dollar.');
                 this.props.finalizeOrder();
             } else if (res.data.menuItems) {
                 voiceService.startSpeechToText(this.onTranscript, 'Please choose another item or say order to finish!');
             }
         }).catch((res) => {
+            store.dispatch({ type: 'LOADER_STATE', payload: false });
             voiceService.startSpeechToText(this.onTranscript, 'Sorry, I did not understand. Please choose an item!');
         });
     }
@@ -46,7 +50,7 @@ class Menu extends React.Component {
             items.push(<MenuItem onClick={this.onClick} key={index} item={item} index={index + 1} />);
         });
         return <div className="full-width app-menu">
-            <h3>Menu Items</h3>
+            <h3>{this.props.restaurantName}&nbsp;-&nbsp;Menu Items</h3>
             <div className="fx-row fx-wrap full-width app-menu-list">{items}</div>
         </div>;
     }

@@ -2,7 +2,7 @@ class Main extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { restaurants: [], menuItems: [] };
+    this.state = { restaurants: [], menuItems: [], restaurantName: '' };
 
     // var vinElem = document.getElementById('vin');
     // gm.info.getVehicleConfiguration(function(data) {
@@ -24,8 +24,14 @@ class Main extends React.Component {
     //   speedText.innerHTML = data.average_speed;
     // }, ['average_speed']);
 
+    this.updateRestaurantName = this.updateRestaurantName.bind(this);
     this.updateRestaurants = this.updateRestaurants.bind(this);
     this.updateMenu = this.updateMenu.bind(this);
+  }
+
+  updateRestaurantName(restaurantName) {
+    console.log('updateRestaurantName', restaurantName);
+    this.setState({ restaurantName: restaurantName });
   }
 
   updateRestaurants(restaurants) {
@@ -37,7 +43,6 @@ class Main extends React.Component {
   updateMenu(menuItems) {
     console.log('updateMenu', menuItems);
     this.setState({ menuItems: menuItems });
-    ReactRouter.hashHistory.push('menu');
   }
 
   cancelSelection() {
@@ -58,14 +63,15 @@ class Main extends React.Component {
       <div className="loaderWrap">
         <div className="loader"></div>
       </div>
-    : '';
+      : '';
     var children = this.props.children ? React.cloneElement(this.props.children, Object.assign({}, this.state, {
-        /*handleLogin: this.handleLogin,*/
-        updateRestaurants: this.updateRestaurants,
-        updateMenu: this.updateMenu,
-        cancelSelection: this.cancelSelection,
-        finalizeOrder: this.finalizeOrder
-      }
+      /*handleLogin: this.handleLogin,*/
+      updateRestaurantName: this.updateRestaurantName,
+      updateRestaurants: this.updateRestaurants,
+      updateMenu: this.updateMenu,
+      cancelSelection: this.cancelSelection,
+      finalizeOrder: this.finalizeOrder
+    }
     )) : '';
     return (
       <div className="main full-width fx-column fx-center">
