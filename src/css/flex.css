@@ -5,6 +5,7 @@
   display: -ms-flex;
   display: -o-flex;
   display: flex;
+  -js-display: flex;
 }
 
 .fx-column {
@@ -23,7 +24,7 @@
 .fx-wrap {
   display: -webkit-flex; /* Safari */
   -webkit-flex-wrap: wrap; /* Safari 6.1+ */
-  display: flex;   
+  display: flex;
   flex-wrap: wrap;
 }
 
