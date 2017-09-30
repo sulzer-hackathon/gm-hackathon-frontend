@@ -6,8 +6,8 @@ class Login extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    if(!this.refs.username.value || !this.refs.password.value){
-      showSnackbar("Username or password blank");
+    if(!this.refs.key.value){
+      showSnackbar("Key blank");
     } else {
       this.handleLogin();
     }
@@ -15,7 +15,7 @@ class Login extends React.Component {
 
   handleLogin(){
     store.dispatch({ type: 'LOADER_STATE', payload: true });
-    webService.handleLogin(this.refs.username.value, this.refs.password.value).then((res)=>{
+    webService.handleLogin(this.refs.key.value).then((res)=>{
       store.dispatch({ type: 'LOADER_STATE', payload: false });
       ReactRouter.hashHistory.push('dashboard');
     }).catch((err)=>{
@@ -25,7 +25,7 @@ class Login extends React.Component {
   }
 
   componentDidMount(){
-    componentHandler.upgradeDom();
+    // componentHandler.upgradeDom();
   }
 
   render() {
@@ -42,20 +42,12 @@ class Login extends React.Component {
         </div>
         <form onSubmit={this.handleSubmit}>
           <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input className="mdl-textfield__input" type="text" ref="username" />
-            <label className="mdl-textfield__label" htmlFor="sample3"><i className="material-icons">mail_outline</i>Username</label>
-          </div>
-          <br/>
-          <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input className="mdl-textfield__input" type="text" ref="password" />
-            <label className="mdl-textfield__label" htmlFor="sample3"><i className="material-icons">lock_outline</i>Password</label>
+            <input className="mdl-textfield__input" type="text" ref="key" placeholder="Enter your key"/>
+            {/*<label className="mdl-textfield__label" htmlFor="sample3"><i className="material-icons">mail_outline</i>Key</label>*/}
           </div>
           <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
             LOG IN
           </button>
-          <div className="additional">
-            <Link to="/register">Don't have an account?</Link>
-          </div>
         </form>
       </div>
     );

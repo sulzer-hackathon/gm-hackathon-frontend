@@ -4,11 +4,10 @@ class WebService {
     this.baseUrl = 'http://localhost:8080/api/';
   }
 
-  handleLogin(username, password) {
-    return axios.get(`${this.baseUrl}/v1/frontend/vehicles`, {
+  handleLogin(key) {
+    return axios.get(`${this.baseUrl}user/login`, {
       params: {
-        username: username,
-        password: password
+        userID: key,
       }
     });
   }
