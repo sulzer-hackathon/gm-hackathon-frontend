@@ -3,13 +3,6 @@
   position: relative;
   min-height: 100%;
 }
-#page{
-  transition: .25s all;
-  opacity: 1;
-}
-#page.fadeout{
-  opacity: 0;
-}
 .main .loaderWrap{
   position: fixed;
   bottom:0;
@@ -18,4 +11,24 @@
   height: calc(100vh - 85px);
   background: #000;
   z-index: 10;
+}
+
+.fade-enter {
+    opacity: 0;
+}
+.fade-enter.fade-enter-active {
+	opacity: 1;
+	transition: opacity 1s ease;
+	transition-property: opacity;
+	transition-duration: 300ms;
+	transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
+}
+.fade-leave {
+	opacity: 1;
+  transition-property: transform, opacity;
+	transition-duration: 300ms;
+	transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
+}
+.fade-leave.example-leave-active {
+	opacity: 0;
 }

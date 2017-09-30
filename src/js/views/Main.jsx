@@ -31,13 +31,13 @@ class Main extends React.Component {
   updateRestaurants(restaurants) {
     console.log('updateRestaurants', restaurants);
     this.setState({ restaurants: restaurants });
-    goToPath('restaurants');
+    ReactRouter.hashHistory.push('restaurants');
   }
 
   updateMenu(menuItems) {
     console.log('updateMenu', menuItems);
     this.setState({ menuItems: menuItems });
-    goToPath('menu');
+    ReactRouter.hashHistory.push('menu');
   }
 
   cancelSelection() {
@@ -50,29 +50,31 @@ class Main extends React.Component {
 
   componentDidMount() {
     snackbarContainer = document.querySelector('#snackbar');
-    goToPath('login');
+    ReactRouter.hashHistory.push('login');
   }
 
   render() {
-
+    var loader = (store.getState().loader) ?
+      <div className="loaderWrap">
+        <div className="loader"></div>
+      </div>
+    : '';
+    var children = this.props.children ? React.cloneElement(this.props.children, Object.assign({}, this.state, {
+        /*handleLogin: this.handleLogin,*/
+        updateRestaurants: this.updateRestaurants,
+        updateMenu: this.updateMenu,
+        cancelSelection: this.cancelSelection,
+        finalizeOrder: this.finalizeOrder
+      }
+    )) : '';
     return (
       <div className="main full-width fx-column fx-center">
-        <div className={"loaderWrap " + (store.getState().loader ? 'show' : 'hidden')}>
-          <div className="loader"></div>
-        </div>
-
-        <div id="page">
-          {
-            this.props.children ? React.cloneElement(this.props.children, Object.assign({}, this.state, {
-              /*handleLogin: this.handleLogin,*/
-              updateRestaurants: this.updateRestaurants,
-              updateMenu: this.updateMenu,
-              cancelSelection: this.cancelSelection,
-              finalizeOrder: this.finalizeOrder
-            }
-            )) : ''
-          }
-        </div >
+        <ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={250} transitionLeaveTimeout={250}>
+          {loader}
+        </ReactCSSTransitionGroup>
+        <ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={250} transitionLeaveTimeout={250}>
+          {children}
+        </ReactCSSTransitionGroup>
         <div id="snackbar" className="mdl-js-snackbar mdl-snackbar">
           <div className="mdl-snackbar__text"></div>
           <button className="mdl-snackbar__action" type="button"></button>
@@ -80,12 +82,4 @@ class Main extends React.Component {
       </div >
     );
   }
-}
-
-var goToPath = (path) => {
-  document.getElementById('page').classList.add('fadeout');
-  setTimeout(() => {
-    ReactRouter.hashHistory.push(path);
-    document.getElementById('page').classList.remove('fadeout');
-  }, 300);
 }

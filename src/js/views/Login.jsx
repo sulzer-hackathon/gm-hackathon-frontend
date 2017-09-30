@@ -18,7 +18,7 @@ class Login extends React.Component {
     webService.handleLogin(this.refs.key.value).then((res)=>{
       setTimeout(()=>{
         store.dispatch({ type: 'LOADER_STATE', payload: false });
-        goToPath('dashboard');
+        ReactRouter.hashHistory.push('dashboard');
       },1000);
     }).catch((err)=>{
       store.dispatch({ type: 'LOADER_STATE', payload: false });
