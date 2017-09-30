@@ -1,7 +1,7 @@
 class WebService {
 
   constructor() {
-    this.baseUrl = 'http://localhost:8080/api/';
+    this.baseUrl = 'http://172.20.10.2:8080/api/';
   }
 
   handleLogin(key) {
