@@ -10,7 +10,7 @@
   width: 100%;
   height: calc(100vh - 85px);
   background: #000;
-  z-index: 10;
+  z-index: 101;
 }
 
 .fade-enter {

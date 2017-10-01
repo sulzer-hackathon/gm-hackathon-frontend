@@ -33,7 +33,7 @@ class Menu extends React.Component {
             if (res.data.cancellation) {
                 this.props.cancelSelection();
             } else if (res.data.total) {
-                var totalSummary = 'Thank you for your order, your final is ' + Math.trunc(res.data.total) + ' Dollar and ' + Math.trunc((res.data.total - Math.floor(res.data.total)) * 100) + ' Cents.';
+                var totalSummary = 'Thank you for your order, your final is ' + Math.trunc(res.data.total) + ' Dollars and ' + Math.trunc((res.data.total - Math.floor(res.data.total)) * 100) + ' Cents.';
                 voiceService.startTextToSpeech(() => { }, totalSummary);
                 showSnackbar(totalSummary);
                 this.props.finalizeOrder();
@@ -59,7 +59,7 @@ class Menu extends React.Component {
         });
         return <div className="full-width app-menu">
             <h3>{this.props.restaurantName}&nbsp;-&nbsp;Menu Items</h3>
-            <ReactCSSTransitionGroup component="div" className="fx-row full-width app-menu-list" transitionName="slide" transitionEnterTimeout={250} transitionLeaveTimeout={250}>
+            <ReactCSSTransitionGroup component="div" className="fx-row fx-wrap full-width app-menu-list" transitionName="slide" transitionEnterTimeout={250} transitionLeaveTimeout={250}>
                 {items}
             </ReactCSSTransitionGroup>
         </div>;
